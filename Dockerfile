@@ -5,20 +5,19 @@ RUN apk add --no-cache --virtual wireshark-build-dependencies \
     build-base \
     cmake \
     ccache \
+    bison \
+    perl \
     glib-dev \
     libgcrypt-dev \
     c-ares-dev \
     flex-dev \
-    bison \
-    perl \
-    qt5-qtbase \
-    qt5-qtbase-x11 \
     libpcap-dev \
     elogind-dev \
+    python3-dev \
     qt5-qtbase-dev \
     qt5-qttools-dev \
     qt5-qtmultimedia-dev \
-    python3-dev
+    qt5-qtbase-x11
 
 RUN git clone --depth 1 https://gitlab.com/wireshark/wireshark.git /wireshark
 
