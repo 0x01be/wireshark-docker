@@ -24,10 +24,7 @@ RUN git clone --depth 1 https://gitlab.com/wireshark/wireshark.git /wireshark
 
 WORKDIR /wireshark/build/
 
-RUN cmake \
-    -G Ninja \
-    -DCMAKE_INSTALL_PREFIX=/opt/wireshark \
-    ..
+RUN cmake -G Ninja ..
 RUN ninja
 
 FROM 0x01be/xpra
@@ -47,7 +44,7 @@ RUN apk add --no-cache --virtual wireshark-runtime-dependencies \
 
 USER xpra
 
-VOLUME /workspace
 WORKDIR /workspace
 
 ENV COMMAND "wireshark"
+
