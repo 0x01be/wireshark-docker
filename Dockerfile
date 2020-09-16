@@ -23,6 +23,9 @@ RUN git clone --depth 1 https://gitlab.com/wireshark/wireshark.git /wireshark
 
 WORKDIR /wireshark/build/
 
-RUN cmake -G Ninja ..
+RUN cmake  \
+    -G Ninja \
+    -DBUILD_tshark=OFF \
+    ..
 RUN ninja
 
