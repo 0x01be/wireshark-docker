@@ -1,4 +1,4 @@
-FROM 0x01be/ninja as builder
+FROM 0x01be/ninja
 
 RUN apk add --no-cache --virtual wireshark-build-dependencies \
     git \
@@ -25,25 +25,4 @@ WORKDIR /wireshark/build/
 
 RUN cmake -G Ninja ..
 RUN ninja
-
-FROM 0x01be/xpra
-
-COPY --from=builder /wireshark/build/run/ /opt/wireshark/
-
-ENV PATH $PATH:/opt/wireshark/
-
-USER root
-RUN apk add --no-cache --virtual wireshark-runtime-dependencies \
-    qt5-qtbase-x11 \
-    qt5-qtmultimedia \
-    libpcap \
-    libgcrypt \
-    c-ares \
-    mesa-dri-swrast
-
-USER xpra
-
-WORKDIR /workspace
-
-ENV COMMAND "wireshark"
 
