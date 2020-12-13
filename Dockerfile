@@ -14,6 +14,6 @@ RUN apk add --no-cache --virtual wireshark-runtime-dependencies \
 
 USER ${USER}
 WORKDIR ${WORKSPACE}
-ENV PAT= ${PATH}:/opt/wireshark/ \
+ENV PATH=${PATH}:/opt/wireshark/ \
     COMMAND=wireshark
 
