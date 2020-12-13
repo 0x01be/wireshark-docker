@@ -4,9 +4,6 @@ FROM 0x01be/xpra
 
 COPY --from=build /wireshark/build/run/ /opt/wireshark/
 
-ENV PATH $PATH:/opt/wireshark/
-
-USER root
 RUN apk add --no-cache --virtual wireshark-runtime-dependencies \
     qt5-qtbase-x11 \
     qt5-qtmultimedia \
@@ -15,9 +12,8 @@ RUN apk add --no-cache --virtual wireshark-runtime-dependencies \
     c-ares \
     mesa-dri-swrast
 
-USER xpra
-
-WORKDIR /workspace
-
-ENV COMMAND "wireshark"
+USER ${USER}
+WORKDIR ${WORKSPACE}
+ENV PAT= ${PATH}:/opt/wireshark/ \
+    COMMAND=wireshark
 
