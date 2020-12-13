@@ -17,9 +17,8 @@ RUN apk add --no-cache --virtual wireshark-build-dependencies \
     qt5-qtbase-dev \
     qt5-qttools-dev \
     qt5-qtmultimedia-dev \
-    qt5-qtbase-x11
-
-RUN git clone --depth 1 https://gitlab.com/wireshark/wireshark.git /wireshark
+    qt5-qtbase-x11 &&\
+    git clone --depth 1 https://gitlab.com/wireshark/wireshark.git /wireshark
 
 WORKDIR /wireshark/build/
 
